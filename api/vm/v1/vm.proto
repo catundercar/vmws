@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package vmws.api.vm.v1;
+
+option go_package = "api/hub/v1;vm_v1";
+
+message VM {
+  string name         = 1;
+  string displayName  = 2;
+  string path         = 3;
+
+  enum Status {
+    Stopped = 0;
+    Phase   = 1;
+    Running = 2;
+  }
+  Status status       = 5;
+
+  message Metadata {
+      int32 processors = 1;
+      int64 memory     = 2;
+  }
+  Metadata metadata    = 4;
+}
